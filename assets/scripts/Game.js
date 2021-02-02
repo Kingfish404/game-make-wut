@@ -92,6 +92,18 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
 
         this.initOneFruit();
+
+        const meta = [
+            "开发者:原项目开发(暂未找到),JinYu",
+            "本项目仓库地址：https://github.com/Kingfish404/Make-WUT",
+            "喜欢的话，求Star",
+            "感谢WUT团委小伙伴的支持",
+            "date:2020-02-02",
+        ]
+
+        for (let i of meta) {
+            console.log(i);
+        }
     },
 
     // 开启物理引擎和碰撞检测
@@ -123,7 +135,7 @@ cc.Class({
             collider.size.height = height;
         }
 
-        _addBound(node, 0, -height / 2 + 460, width, 1);
+        _addBound(node, 0, -height / 2 + 15, width, 1);
         _addBound(node, 0, height / 2, width, 1);
         _addBound(node, -width / 2, 0, 1, height);
         _addBound(node, width / 2, 0, 1, height);
@@ -245,7 +257,7 @@ cc.Class({
         this.createFruitJuice(id, cc.v2({ x, y }), other.node.width);
 
         const nextId = id + 1;
-        if (nextId <= 11) {
+        if (nextId <= 8) {
             const newFruit = this.createFruitOnPos(x, y, nextId);
 
             this.score.string = String(parseInt(this.score.string) + nextId * 10);
@@ -261,7 +273,7 @@ cc.Class({
             }).start()
         } else {
             // todo 合成两个西瓜
-            console.log(' todo 合成两个西瓜 还没有实现哦~ ');
+            console.log(' todo 合成两个最大的 还没有实现哦~ ');
         }
     },
 

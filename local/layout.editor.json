@@ -20,7 +20,7 @@
                 ],
                 "height": 631,
                 "type": "panel",
-                "width": 207
+                "width": 295
               },
               {
                 "active": 0,
@@ -29,12 +29,12 @@
                 ],
                 "height": 694,
                 "type": "panel",
-                "width": 207
+                "width": 295
               }
             ],
             "height": 1328,
             "type": "dock-v",
-            "width": 207
+            "width": 295
           },
           {
             "children": [
@@ -47,7 +47,7 @@
                     ],
                     "height": 948,
                     "type": "panel",
-                    "width": 489.984375
+                    "width": 402
                   },
                   {
                     "active": 0,
@@ -61,7 +61,7 @@
                 ],
                 "height": 948,
                 "type": "dock-h",
-                "width": 757
+                "width": 669
               },
               {
                 "active": 0,
@@ -72,12 +72,12 @@
                 ],
                 "height": 377,
                 "type": "panel",
-                "width": 757
+                "width": 669
               }
             ],
             "height": 1328,
             "type": "dock-v",
-            "width": 757
+            "width": 669
           },
           {
             "active": 0,
@@ -103,7 +103,8 @@
         "inspector",
         "cocos-services"
       ]
-    }
+    },
+    "window-1612264261482": {}
   },
   "panels": {
     "builder": {

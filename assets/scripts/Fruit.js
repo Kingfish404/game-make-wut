@@ -18,7 +18,7 @@ cc.Class({
         if (self.node && other.node) {
             const s = self.node.getComponent('Fruit')
             const o = other.node.getComponent('Fruit')
-            if (s && o && s.id === o.id) {
+            if (s && o && s.id === o.id && s.id < 8) {
                 self.node.emit('sameContact', { self, other });
             } else {
                 self.node.emit('checkBound', { self, other });
