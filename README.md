@@ -14,6 +14,10 @@
 
 设计:陈振鹏同学
 
+## 仓库地址
+
+[https://github.com/Kingfish404/Make-WUT](https://github.com/Kingfish404/Make-WUT)
+
 ## License
 
 MIT

@@ -162,7 +162,7 @@ cc.Class({
         fruit.x = x;
 
         cc.tween(fruit)
-            .by(0.3, { position: cc.v2(0, 0) })
+            .by(0, { position: cc.v2(0, 0) }, { easing: t => 100000*t * t })
             .call(() => {
                 // 开启物理效果
                 this.startFruitPhysics(fruit)
