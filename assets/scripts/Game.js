@@ -39,6 +39,16 @@ cc.Class({
             type: cc.Node
         },
 
+        endNodeBG: {
+            default: null,
+            type: cc.Node
+        },
+
+        endNode: {
+            default: null,
+            type: cc.Node
+        },
+
         juices: {
             default: [],
             type: JuiceItem
@@ -74,6 +84,9 @@ cc.Class({
         // 记录当前屏幕大小
         this.lastWidth = this.node.width;
 
+        // 记录武汉理工数量
+        this.count = 0;
+
         this.score = this.score.getComponent(cc.Label);
 
         // 设置地面位置
@@ -84,7 +97,7 @@ cc.Class({
         this.isEnd = false;
 
         // 距离上边界的位置
-        this.topBound = 20;
+        this.topBound = 15;
         // 地面位置
         this.buttomBound = 15;
 
@@ -128,10 +141,10 @@ cc.Class({
     // 设置边界和UI位置
     initBound() {
         // 设置标题位置
-        this.titleText.x = -this.node.width / 2 + 15;
+        this.titleText.x = 15;
 
         // 设置分数位置
-        this.score.node.x = this.node.width / 2 - 15;
+        this.score.node.x = this.node.width - 15;
 
         // 设置四周的碰撞区域
         let width = this.node.width;
@@ -195,7 +208,8 @@ cc.Class({
 
                 // 0.75s后重新生成一个
                 this.scheduleOnce(() => {
-                    const nextId = this.getNextFruitId()
+                    const nextId = this.getNextFruitId();
+
                     this.initOneFruit(nextId)
                     this.isCreating = false
                 }, 0.75)
@@ -283,9 +297,17 @@ cc.Class({
         this.createFruitJuice(id, cc.v2({ x, y }), other.node.width);
 
         const nextId = id + 1;
-        if (nextId <= 8) {
+        if (nextId <= 9) {
+            if (nextId == 8) {
+                // 统计数量
+                this.count++;
+            }
+            if (nextId == 9) {
+                nextId = 1;
+            }
             const newFruit = this.createFruitOnPos(x, y, nextId);
 
+            // 分数累加
             this.score.string = String(parseInt(this.score.string) + nextId * 10);
 
             this.startFruitPhysics(newFruit);
@@ -305,9 +327,24 @@ cc.Class({
 
     // 检测当前的两个水果是否超出边界了
     onCheckBound({ self, other }) {
-        if (self.node.y + self.node.width > this.node.y - 20) {
-            console.log("超出范围啦");
-            this.isEnd = true;
+        if (this.lastWidth == this.node.width && self.node.y + self.node.width > this.node.y - this.topBound) {
+            setTimeout(() => {
+                if (this.lastWidth == this.node.width && self.node.y + self.node.width > this.node.y - this.topBound) {
+                    console.log("超出范围啦");
+                    // 设置显示结束
+                    this.endNode.x = this.node.width / 2;
+                    this.endNode.y = this.node.height / 2;
+                    this.endNodeBG.x = this.node.width / 2;
+                    this.endNodeBG.y = this.node.height / 2;
+                    let end_msg = this.endNode.getComponent(cc.Label);
+                    if (this.count == 0) {
+
+                    } else {
+                        end_msg.string = '恭喜你合成了\n\n' + this.count + '个武汉理工';
+                    }
+                    this.isEnd = true;
+                }
+            }, 2000);
         }
     },
 

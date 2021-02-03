@@ -5,7 +5,7 @@
       "main": true,
       "url": "app://editor/index.html",
       "windowType": "dockable",
-      "x": -381,
+      "x": -380,
       "y": -1415,
       "width": 1280,
       "height": 1415,
@@ -20,7 +20,7 @@
                 ],
                 "height": 631,
                 "type": "panel",
-                "width": 295
+                "width": 294
               },
               {
                 "active": 0,
@@ -29,12 +29,12 @@
                 ],
                 "height": 694,
                 "type": "panel",
-                "width": 295
+                "width": 294
               }
             ],
             "height": 1328,
             "type": "dock-v",
-            "width": 295
+            "width": 294
           },
           {
             "children": [
@@ -47,7 +47,7 @@
                     ],
                     "height": 948,
                     "type": "panel",
-                    "width": 402
+                    "width": 403
                   },
                   {
                     "active": 0,
@@ -56,12 +56,12 @@
                     ],
                     "height": 948,
                     "type": "panel",
-                    "width": 264
+                    "width": 265
                   }
                 ],
                 "height": 948,
                 "type": "dock-h",
-                "width": 669
+                "width": 671
               },
               {
                 "active": 0,
@@ -72,12 +72,12 @@
                 ],
                 "height": 377,
                 "type": "panel",
-                "width": 669
+                "width": 671
               }
             ],
             "height": 1328,
             "type": "dock-v",
-            "width": 669
+            "width": 671
           },
           {
             "active": 0,
@@ -87,7 +87,7 @@
             ],
             "height": 1328,
             "type": "panel",
-            "width": 310
+            "width": 309
           }
         ],
         "type": "dock-h"
@@ -103,12 +103,14 @@
         "inspector",
         "cocos-services"
       ]
-    }
+    },
+    "worker": {},
+    "window-1612337882485": {}
   },
   "panels": {
     "builder": {
-      "x": 418,
-      "y": -1169,
+      "x": 412,
+      "y": -1183,
       "width": 500,
       "height": 728
     },
