@@ -71,25 +71,31 @@ cc.Class({
     },
 
     onLoad() {
-        this.initPhysics()
-
-        // 设置标题位置
-        this.titleText.x = -this.node.width / 2 + 15;
-
-        // 设置分数位置
-        this.score.x = this.node.width / 2 - 15;
+        // 记录当前屏幕大小
+        this.lastWidth = this.node.width;
 
         this.score = this.score.getComponent(cc.Label);
 
         // 设置地面位置
         this.ground.y = 15;
 
-        this.isCreating = false
-        this.fruitCount = 0
+        this.isCreating = false;
+        this.fruitCount = 0;
+        this.isEnd = false;
+
+        // 距离上边界的位置
+        this.topBound = 20;
+        // 地面位置
+        this.buttomBound = 15;
+
+        this.initPhysics();
+        this.initBound();
 
         // 监听点击事件 todo 是否能够注册全局事件
         this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
+
+        cc.view.resizeWithBrowserSize(false);
 
         this.initOneFruit();
 
@@ -117,6 +123,15 @@ cc.Class({
         // 碰撞检测
         const collisionManager = cc.director.getCollisionManager();
         collisionManager.enabled = true
+    },
+
+    // 设置边界和UI位置
+    initBound() {
+        // 设置标题位置
+        this.titleText.x = -this.node.width / 2 + 15;
+
+        // 设置分数位置
+        this.score.node.x = this.node.width / 2 - 15;
 
         // 设置四周的碰撞区域
         let width = this.node.width;
@@ -135,7 +150,7 @@ cc.Class({
             collider.size.height = height;
         }
 
-        _addBound(node, 0, -height / 2 + 15, width, 1);
+        _addBound(node, 0, -height / 2 + this.buttomBound, width, 1);
         _addBound(node, 0, height / 2, width, 1);
         _addBound(node, -width / 2, 0, 1, height);
         _addBound(node, width / 2, 0, 1, height);
@@ -153,6 +168,17 @@ cc.Class({
         if (this.isCreating) {
             return;
         }
+        if (this.isEnd) {
+            if (this.currentFruit) {
+                let cur = this.currentFruit;
+                this.currentFruit.removeFromParent(false);
+            }
+            return;
+        }
+        if (this.lastWidth != this.node.width) {
+            // 屏幕大小改变了，重新设置边界
+            this.initBound();
+        }
         this.isCreating = true;
 
         const fruit = this.currentFruit;
@@ -162,7 +188,7 @@ cc.Class({
         fruit.x = x;
 
         cc.tween(fruit)
-            .by(0, { position: cc.v2(0, 0) }, { easing: t => 100000*t * t })
+            .by(0, { position: cc.v2(0, 0) }, { easing: t => 100000 * t * t })
             .call(() => {
                 // 开启物理效果
                 this.startFruitPhysics(fruit)
@@ -281,6 +307,7 @@ cc.Class({
     onCheckBound({ self, other }) {
         if (self.node.y + self.node.width > this.node.y - 20) {
             console.log("超出范围啦");
+            this.isEnd = true;
         }
     },
 
