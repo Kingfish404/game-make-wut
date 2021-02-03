@@ -27,6 +27,9 @@
       },
       {
         "__id__": 34
+      },
+      {
+        "__id__": 46
       }
     ],
     "_active": false,
@@ -999,7 +1002,7 @@
     "_groupIndex": 0,
     "groupIndex": 0,
     "showInEditor": false,
-    "_id": "edTVZEHNlE+ZAOa5HLH9z6"
+    "_id": "5cwOHLwE5NN5pd7q1PSUgb"
   },
   {
     "__type__": "cc.Label",
@@ -1032,7 +1035,7 @@
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
     "_N$cacheMode": 0,
-    "_id": "27PLRwm5VFjo3PJHSM4SDC"
+    "_id": "450cxej2tDYqm8E+tpeJnK"
   },
   {
     "__type__": "cc.RichText",
@@ -1460,5 +1463,86 @@
     "slash": {
       "__uuid__": "a8376909-5685-4018-918b-5e689f85a863"
     }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "music",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 47
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": "c53+ojtdFD162Clz3Fg4ll"
+  },
+  {
+    "__type__": "cc.AudioSource",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 46
+    },
+    "_enabled": true,
+    "_clip": {
+      "__uuid__": "a3d3f1fc-ea21-4326-bc6c-bcb9eccfd632"
+    },
+    "_volume": 1,
+    "_mute": false,
+    "_loop": true,
+    "_firstlyEnabled": true,
+    "playOnLoad": true,
+    "preload": true,
+    "_id": "70QegEz3FDa5xBncBIA/Nq"
   }
 ]

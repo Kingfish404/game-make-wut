@@ -296,7 +296,7 @@ cc.Class({
 
         this.createFruitJuice(id, cc.v2({ x, y }), other.node.width);
 
-        const nextId = id + 1;
+        let nextId = id + 1;
         if (nextId <= 9) {
             if (nextId == 8) {
                 // 统计数量
@@ -327,9 +327,11 @@ cc.Class({
 
     // 检测当前的两个水果是否超出边界了
     onCheckBound({ self, other }) {
-        if (this.lastWidth == this.node.width && self.node.y + self.node.width > this.node.y - this.topBound) {
+        if (this.lastWidth == this.node.width && self.node.y + self.node.width / 2 > this.node.y - this.topBound) {
+            // TODO fix bug in here
+            const last_x = self.node.x;
             setTimeout(() => {
-                if (this.lastWidth == this.node.width && self.node.y + self.node.width > this.node.y - this.topBound) {
+                if (this.lastWidth == this.node.width && last_x == self.node.x && self.node.y + self.node.width / 2 > this.node.y - this.topBound) {
                     console.log("超出范围啦");
                     // 设置显示结束
                     this.endNode.x = this.node.width / 2;
@@ -344,7 +346,7 @@ cc.Class({
                     }
                     this.isEnd = true;
                 }
-            }, 2000);
+            }, 1500);
         }
     },
 
